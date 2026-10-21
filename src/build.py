@@ -177,7 +177,7 @@ for l in LANGS:
                      {"@type": "ItemList", "name": t["courses_h2"], "itemListElement": [
                          {"@type": "ListItem", "position": i + 1, "url": SITE_URL + "/" + c["slug"]}
                          for i, c in enumerate([c for c in t["courses"] if c["slug"]])]}]
-            common.update(preload="assets/img/hero-wozek.webp")
+            common.update(preload="assets/img/hero-podest.webp")
             html = env.get_template("index.html").render(
                 page_title=t["meta_title"], page_desc=t["meta_desc"], nav_base="", jsonld=ld(graph), **common)
         elif kind == "privacy":

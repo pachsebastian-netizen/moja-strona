@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 <main id="main">
-  <section class="hero on-dark">
+  <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <h1>{{ t.hero_h1 }}</h1>
@@ -12,9 +12,10 @@
         </div>
         <p class="hero-note">{{ t.hero_note }}</p>
       </div>
-      <figure class="hero-photo"><img src="{{ root }}assets/img/hero-wozek.webp" width="1100" height="1375" alt="{{ t.alt_hero }}" fetchpriority="high"></figure>
+      <figure class="hero-duo"><img src="{{ root }}assets/img/hero-podest.webp" width="640" height="900" alt="{{ t.alt_hero_lift }}" fetchpriority="high"><img src="{{ root }}assets/img/hero-wozek.webp" width="640" height="900" alt="{{ t.alt_hero }}"></figure>
     </div>
-      </section>
+    <div class="hero-ground" aria-hidden="true"></div>
+  </section>
 
   <section class="facts" aria-label="{{ t.facts_label }}">
     <div class="wrap facts-grid">
