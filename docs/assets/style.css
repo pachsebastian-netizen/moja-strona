@@ -114,9 +114,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero-note { margin-top: 22px; font-size: .95rem; color: var(--steel); max-width: 34em; }
 .hero-ground { height: 18px; background: var(--graphite); }
+/* Strona główna: nagłówek na całą szerokość, pod nim opis i ilustracja */
+.hero-home { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); row-gap: 0; }
+.hero-home .hero-title { grid-column: 1 / -1; max-width: 17em; font-size: clamp(2.1rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: clamp(8px, 2vw, 24px); }
+.hero-home .hero-copy { align-self: center; padding-bottom: clamp(32px, 5vw, 64px); }
+.hero-home .hero-copy .lead { margin-top: 0; }
 @media (max-width: 860px) {
-  .hero-grid { grid-template-columns: 1fr; }
+  .hero-grid, .hero-home { grid-template-columns: 1fr; }
   .hero-copy { padding-bottom: 8px; }
+  .hero-home .hero-title { margin-bottom: 18px; }
 }
 
 .hero-art { align-self: end; min-width: 0; }
