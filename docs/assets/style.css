@@ -9,9 +9,11 @@
   --white: #FFFFFF;
   --paper: #FFFFFF;
   --concrete: #ECEDEF;
+  --page: #E6E7EA;       /* tło strony pod białym nagłówkiem */
+  --page-alt: #DADCE0;   /* tło sekcji wyróżnionych */
   --steel: #5B636B;
-  --line: #D5D8DC;
-  --hair: #D5D8DC;
+  --line: #C7CBD0;
+  --hair: #C7CBD0;
   --hair-dark: #3a3a3a;
   --mist: #B9BDC2;
   --plate: #F7F7F8;
@@ -31,7 +33,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--white);
+  background: var(--page);
   color: var(--graphite);
   font-family: var(--font-body);
   font-size: 1.0625rem;
@@ -133,7 +135,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @keyframes rise { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
 
 /* ---------- Pasek faktów ---------- */
-.facts { background: var(--concrete); }
+.facts { background: var(--page-alt); }
 .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
 .fact { padding: 26px 24px 28px 0; min-width: 0; }
 .fact + .fact { padding-left: 24px; border-left: 1px solid var(--line); }
@@ -155,7 +157,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .section { padding-block: clamp(64px, 9vw, 112px); }
 .section-head { max-width: 46em; margin-bottom: clamp(32px, 4vw, 48px); }
 .section-head p { margin-top: 16px; }
-.bg-concrete { background: var(--concrete); }
+.bg-concrete { background: var(--page-alt); }
 
 /* ---------- Kursy: tabliczki znamionowe ---------- */
 .plates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -262,7 +264,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .form { grid-template-columns: 1fr; } }
 
-.contact-card { border: 2px solid var(--graphite); border-radius: 4px; padding: 26px; }
+.contact-card { border: 2px solid var(--graphite); border-radius: 4px; padding: 26px; background: var(--white); }
 .contact-card dl { margin: 0; }
 .contact-card dl div { padding: 14px 0; border-bottom: 1px solid var(--line); }
 .contact-card dl div:first-child { padding-top: 0; }
