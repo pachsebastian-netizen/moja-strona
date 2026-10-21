@@ -26,6 +26,11 @@ COMPANY = dict(
 POLICY_DATE = "21.10.2026"
 # Pływający przycisk „Zadzwoń” pojawia się sam, gdy w COMPANY wpiszesz prawdziwy numer w polu phone.
 CALL_LABEL = {"pl": "Zadzwoń", "en": "Call us", "uk": "Зателефонувати"}
+# Obrazek do udostępniania linku (Facebook, Messenger, WhatsApp) – osobny dla każdego języka.
+OG_IMAGE = {"pl": "og-image.jpg", "en": "og-image-en.jpg", "uk": "og-image-uk.jpg"}
+OG_ALT = {"pl": "AllPass Training – kursy UDT i szkolenia BHP",
+          "en": "AllPass Training – UDT courses and H&S training",
+          "uk": "AllPass Training – курси UDT та охорона праці"}
 # ------------------------------------------------------------
 
 mode = sys.argv[1] if len(sys.argv) > 1 else "live"
@@ -104,14 +109,18 @@ ORG_ID = SITE_URL + "/#organizacja"
 REGIONS = ["Województwo śląskie", "Województwo małopolskie", "Województwo podkarpackie", "Polska"]
 
 
-def org_ld(t):
+def og_url(lang):
+    return SITE_URL + "/assets/" + OG_IMAGE[lang]
+
+
+def org_ld(t, lang):
     org = {
         "@type": ["EducationalOrganization", "LocalBusiness"],
         "@id": ORG_ID,
         "name": "AllPass Training",
         "url": SITE_URL + "/",
         "logo": SITE_URL + "/assets/logo-full.png",
-        "image": SITE_URL + "/assets/og-image.jpg",
+        "image": og_url(lang),
         "email": plain["email"],
         "description": t["meta_desc"],
         "areaServed": [{"@type": "AdministrativeArea", "name": r} for r in REGIONS],
@@ -136,7 +145,7 @@ def course_ld(c, cc, url, lang):
         "name": cc["h1"],
         "description": cc["desc"],
         "url": url,
-        "image": SITE_URL + "/assets/og-image.jpg",
+        "image": og_url(lang),
         "inLanguage": lang,
         "availableLanguage": ["pl", "en", "uk"],
         "provider": {"@id": ORG_ID},
@@ -179,14 +188,14 @@ for l in LANGS:
             fonts=fonts, sprite=sprite, year=datetime.date.today().year, company=company,
             privacy_rel=l["privacy"], home=(l["home"] or "./"),
             form_js=json.dumps(t["form"], ensure_ascii=False), form_endpoint=FORM_ENDPOINT,
-            og_image=SITE_URL + "/assets/og-image.jpg", og_w=1200, og_h=630, og_alt="AllPass Training",
+            og_image=og_url(l["code"]), og_w=1200, og_h=630, og_alt=OG_ALT[l["code"]],
             preload="",
             tel=tel, call_label=CALL_LABEL[l["code"]],
         )
         if kind == "home":
             graph = [{"@type": "WebSite", "@id": SITE_URL + "/#strona", "url": home_url, "name": "AllPass Training",
                       "inLanguage": l["code"], "publisher": {"@id": ORG_ID}},
-                     org_ld(t),
+                     org_ld(t, l["code"]),
                      {"@type": "ItemList", "name": t["courses_h2"], "itemListElement": [
                          {"@type": "ListItem", "position": i + 1, "url": SITE_URL + "/" + c["slug"]}
                          for i, c in enumerate([c for c in t["courses"] if c["slug"]])]}]
@@ -197,7 +206,7 @@ for l in LANGS:
             p = l["p"]
             p = dict(p, updated=fill(p["updated"]), intro=fill(p["intro"]),
                      sections=[(h, [fill(x) for x in paras]) for h, paras in p["sections"]])
-            graph = [org_ld(t), crumbs_ld([(ui["crumb_home"], home_url), (p["title"], url)])]
+            graph = [org_ld(t, l["code"]), crumbs_ld([(ui["crumb_home"], home_url), (p["title"], url)])]
             html = env.get_template("privacy.html").render(
                 page_title=f'{p["title"]} | AllPass Training', page_desc=p["meta_desc"], p=p,
                 nav_base=root + (l["home"] or "./"), jsonld=ld(graph), **common)
@@ -205,7 +214,7 @@ for l in LANGS:
             c = next(x for x in t["courses"] if x["id"] == kind)
             cc = cc_all[kind]
             others = [x for x in t["courses"] if x["slug"] and x["id"] != kind]
-            graph = [org_ld(t), course_ld(c, cc, url, l["code"]),
+            graph = [org_ld(t, l["code"]), course_ld(c, cc, url, l["code"]),
                      crumbs_ld([(ui["crumb_home"], home_url), (ui["crumb_courses"], home_url + "#kursy"), (c["name"], url)])]
             html = env.get_template("course.html").render(
                 page_title=cc["title"], page_desc=cc["desc"], c=c, cc=cc, others=others,

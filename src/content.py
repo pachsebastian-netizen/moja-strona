@@ -9,7 +9,7 @@ PL = dict(
     alt_band="Żółty podest przegubowy przed elewacją budynku",
     photo_credit="Wszelkie prawa zastrzeżone.",
     alts=dict(wozki="Wózek widłowy z operatorem na placu", teleskopowe="Ładowarka teleskopowa na budowie wieczorem", podesty="Podesty przegubowe i ładowarka teleskopowa na tle nieba", bhp="Kaski ochronne na regałach"),
-    meta_title="Kursy UDT: wózki widłowe, zwyżki, ładowarki teleskopowe – Śląsk, Kraków | AllPass",
+    meta_title="Kursy UDT: wózki widłowe, zwyżki, ładowarki teleskopowe – Małopolska, Śląsk, Świętokrzyskie i Podkarpackie | AllPass",
     meta_desc="Kursy na wózki widłowe, podesty ruchome (zwyżki) i ładowarki teleskopowe z egzaminem UDT oraz szkolenia BHP. Własny plac lub szkolenie u klienta. Po polsku, angielsku i ukraińsku.",
     og_locale="pl_PL",
     skip="Przejdź do treści", nav_label="Menu główne", lang_label="Język", menu="Menu",
