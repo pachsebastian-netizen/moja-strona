@@ -203,7 +203,7 @@ for l in LANGS:
         print("built", target)
 
 if mode == "live":
-    # Plik CNAME (allpass.pl) dodamy dopiero przy podłączaniu domeny.
+    (out / "CNAME").write_text("allpass.pl\n")  # domena podłączona w GitHub Pages
     (out / ".nojekyll").write_text("")
     (out / "robots.txt").write_text("User-agent: *\nAllow: /\n\nSitemap: https://allpass.pl/sitemap.xml\n")
     today = datetime.date.today().isoformat()

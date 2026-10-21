@@ -20,11 +20,14 @@ Strona firmowa: kursy UDT (wózki widłowe, ładowarki teleskopowe, podesty ruch
 2. Uruchom `cd src && python3 build.py live` (wymaga Pythona i pakietu `jinja2`).
 3. Zatwierdź zmiany w repozytorium. GitHub Pages opublikuje stronę w ciągu 1–2 minut.
 
+## Domena
+
+Strona działa pod https://allpass.pl. Plik `docs/CNAME` tworzy skrypt `build.py` – nie usuwaj go, bo GitHub Pages odłączy domenę.
+
 ## Do uzupełnienia przed startem
 
 - `FORM_ENDPOINT` w `src/build.py` – adres formularza z formspree.io,
 - `COMPANY` w `src/build.py` – nazwa firmy, adres, NIP, telefon (dla spółki także KRS),
-- plik `docs/CNAME` z treścią `allpass.pl` – dopiero przy podłączaniu domeny.
 
 ## SEO
 
