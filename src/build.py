@@ -24,6 +24,8 @@ COMPANY = dict(
     phone=PLACEHOLDER.format("+48 XXX XXX XXX"),
 )
 POLICY_DATE = "21.10.2026"
+# Pływający przycisk „Zadzwoń” pojawia się sam, gdy w COMPANY wpiszesz prawdziwy numer w polu phone.
+CALL_LABEL = {"pl": "Zadzwoń", "en": "Call us", "uk": "Зателефонувати"}
 # ------------------------------------------------------------
 
 mode = sys.argv[1] if len(sys.argv) > 1 else "live"
@@ -58,6 +60,16 @@ if mode != "live":
         shutil.rmtree(out)
     shutil.copytree(base.parent / "docs/assets", out / "assets")
     shutil.copy(base.parent / "docs/favicon.png", out / "favicon.png")
+
+
+def is_set_phone(v):
+    return bool(v) and "X" not in v
+
+
+tel = ""
+if is_set_phone(plain["phone"]):
+    tel = "+" + "".join(ch for ch in plain["phone"] if ch.isdigit()) if plain["phone"].strip().startswith("+") \
+        else "+48" + "".join(ch for ch in plain["phone"] if ch.isdigit())
 
 
 def prep(l):
@@ -169,6 +181,7 @@ for l in LANGS:
             form_js=json.dumps(t["form"], ensure_ascii=False), form_endpoint=FORM_ENDPOINT,
             og_image=SITE_URL + "/assets/og-image.jpg", og_w=1200, og_h=630, og_alt="AllPass Training",
             preload="",
+            tel=tel, call_label=CALL_LABEL[l["code"]],
         )
         if kind == "home":
             graph = [{"@type": "WebSite", "@id": SITE_URL + "/#strona", "url": home_url, "name": "AllPass Training",

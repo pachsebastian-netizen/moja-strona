@@ -150,7 +150,7 @@
         <aside class="contact-card" aria-label="{{ t.nav_contact }}">
           <dl>
             <div><dt>{{ t.c_email }}</dt><dd><a href="mailto:{{ company.email }}">{{ company.email }}</a></dd></div>
-            <div><dt>{{ t.c_phone }}</dt><dd>{{ company.phone }}</dd></div>
+            <div><dt>{{ t.c_phone }}</dt><dd>{% if tel %}<a href="tel:{{ tel }}">{{ company.phone }}</a>{% else %}{{ company.phone }}{% endif %}</dd></div>
             <div><dt>{{ t.c_address }}</dt><dd>{{ company.address }}</dd></div>
             <div><dt>{{ t.c_area }}</dt><dd>{{ t.c_area_v }}</dd></div>
             <div><dt>{{ t.c_langs }}</dt><dd>{{ t.c_langs_v }}</dd></div>
