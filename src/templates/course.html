@@ -21,7 +21,7 @@
             <a class="btn btn-ghost" href="#program">{{ cc.program_h }}</a>
           </div>
         </div>
-        <figure class="hero-photo course-photo"><img src="{{ root }}assets/img/{{ c.photo }}" width="900" height="560" alt="{{ c.alt }}" fetchpriority="high"></figure>
+        <figure class="course-art" aria-hidden="true">{% if c.icons|length == 1 %}<svg viewBox="0 0 {{ c.vb }} 100"><use href="#{{ c.icons[0] }}"/></svg>{% endif %}</figure>
       </div>
     </div>
   </section>

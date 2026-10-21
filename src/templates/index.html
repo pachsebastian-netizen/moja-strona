@@ -12,7 +12,7 @@
         </div>
         <p class="hero-note">{{ t.hero_note }}</p>
       </div>
-      <figure class="hero-duo"><img src="{{ root }}assets/img/hero-podest.webp" width="640" height="900" alt="{{ t.alt_hero_lift }}" fetchpriority="high"><img src="{{ root }}assets/img/hero-wozek.webp" width="640" height="900" alt="{{ t.alt_hero }}"></figure>
+      <div class="hero-art">{{ hero_svg | safe }}</div>
     </div>
     <div class="hero-ground" aria-hidden="true"></div>
   </section>
@@ -74,7 +74,6 @@
     </div>
   </section>
 
-  <figure class="band"><img src="{{ root }}assets/img/pas-podest.webp" width="2000" height="900" alt="{{ t.alt_band }}" loading="lazy"></figure>
 
   <section class="section dark on-dark" id="firmy">
     <div class="wrap biz-grid">

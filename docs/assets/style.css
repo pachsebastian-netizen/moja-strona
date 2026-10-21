@@ -119,11 +119,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .hero-copy { padding-bottom: 8px; }
 }
 
-/* Dwa zdjęcia obok siebie: podest i wózek */
-.hero-duo { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: end; min-width: 0; }
-.hero-duo img { width: 100%; height: auto; aspect-ratio: 32 / 45; object-fit: cover; border: 2px solid var(--graphite); border-bottom: 0; border-radius: var(--radius) var(--radius) 0 0; }
-.hero-duo img + img { margin-top: 56px; }
-@media (max-width: 860px) { .hero-duo { max-width: 560px; gap: 10px; } .hero-duo img + img { margin-top: 32px; } }
+.hero-art { align-self: end; min-width: 0; }
+.hero-art svg { width: 100%; height: auto; }
+@media (max-width: 860px) { .hero-art { max-width: 560px; } }
+/* Jedna sekwencja przy wejściu: platforma podnośnika wjeżdża w górę */
+.lift-rise { transform-origin: 50% 100%; animation: rise 1.4s cubic-bezier(.2,.7,.2,1) .3s both; }
+@keyframes rise { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
 
 /* ---------- Pasek faktów ---------- */
 .facts { background: var(--concrete); }
@@ -158,7 +159,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .plate::before, .plate::after { content: ""; position: absolute; top: 10px; width: 7px; height: 7px; border-radius: 50%; background: #9aa1a8; box-shadow: inset -1px -1px 0 rgba(0,0,0,.35); z-index: 2; }
 .plate::before { left: 10px; }
 .plate::after { right: 10px; }
-.plate-photo { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-bottom: 2px solid var(--graphite); border-radius: 2px 2px 0 0; }
 .plate-head { display: flex; align-items: center; gap: 14px; padding: 22px 24px 18px; border-bottom: 2px solid var(--graphite); }
 .plate-head svg { width: 92px; height: 72px; flex: none; }
 .plate-head svg.duo { width: 130px; }
@@ -201,10 +201,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .step::before { top: 48px; left: 23px; right: auto; width: 2px; height: calc(100% - 20px); }
   .step h3 { margin-top: 10px; }
 }
-
-/* ---------- Pas ze zdjęciem ---------- */
-.band { margin: 0; }
-.band img { width: 100%; height: clamp(220px, 34vw, 520px); object-fit: cover; object-position: 50% 70%; display: block; }
 
 /* ---------- Dla firm (ciemna) ---------- */
 .dark { background: var(--graphite); color: var(--white); }
@@ -312,8 +308,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .course-hero { padding-bottom: 0; }
 .course-grid { align-items: center; }
 .course-grid .hero-copy { padding-bottom: clamp(36px, 6vw, 72px); }
-.course-photo { margin: 0 0 clamp(36px, 6vw, 72px); min-width: 0; }
-.course-photo img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border: 2px solid var(--graphite); border-radius: var(--radius); }
+.course-art { margin: 0 0 clamp(36px, 6vw, 72px); min-width: 0; display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; background: var(--plate); border: 2px solid var(--graphite); border-radius: 4px; position: relative; }
+.course-art::before, .course-art::after { content: ""; position: absolute; top: 12px; width: 8px; height: 8px; border-radius: 50%; background: #9aa1a8; box-shadow: inset -1px -1px 0 rgba(0,0,0,.35); }
+.course-art::before { left: 12px; }
+.course-art::after { right: 12px; }
+.course-art svg { width: 62%; height: auto; }
+@media (max-width: 860px) { .course-art { max-width: 520px; aspect-ratio: 16 / 9; } }
 .course-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 18px; margin-top: 28px; }
 .course-price .price { font-size: 2.6rem; }
 .course-price .price-note { margin: 0; }

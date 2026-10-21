@@ -40,7 +40,7 @@ else:
              '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
              '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=' + FAMILIES + '&display=swap">')
 
-PHOTOS = {"wozki": "kurs-wozki.webp", "teleskopowe": "kurs-teleskopowe.webp", "podesty": "kurs-podesty.webp", "bhp": "kurs-bhp.webp"}
+PHOTOS = {}   # zdjęcia wyłączone: karty kursów pokazują ilustracje
 
 LANGS = [
     dict(code="pl", hreflang="pl", short="PL", name="Polski", home="", privacy="polityka-prywatnosci/", t=content.PL, p=privacy_content.PL, x=ADDS["PL"], cc=courses_content.PL, ui=courses_content.UI["PL"]),
@@ -124,7 +124,7 @@ def course_ld(c, cc, url, lang):
         "name": cc["h1"],
         "description": cc["desc"],
         "url": url,
-        "image": SITE_URL + "/assets/img/" + c["photo"],
+        "image": SITE_URL + "/assets/og-image.jpg",
         "inLanguage": lang,
         "availableLanguage": ["pl", "en", "uk"],
         "provider": {"@id": ORG_ID},
@@ -177,7 +177,7 @@ for l in LANGS:
                      {"@type": "ItemList", "name": t["courses_h2"], "itemListElement": [
                          {"@type": "ListItem", "position": i + 1, "url": SITE_URL + "/" + c["slug"]}
                          for i, c in enumerate([c for c in t["courses"] if c["slug"]])]}]
-            common.update(preload="assets/img/hero-podest.webp")
+            common.update(hero_svg=env.from_string((base / "templates/hero.svg").read_text()).render(t=t))
             html = env.get_template("index.html").render(
                 page_title=t["meta_title"], page_desc=t["meta_desc"], nav_base="", jsonld=ld(graph), **common)
         elif kind == "privacy":
@@ -194,8 +194,6 @@ for l in LANGS:
             others = [x for x in t["courses"] if x["slug"] and x["id"] != kind]
             graph = [org_ld(t), course_ld(c, cc, url, l["code"]),
                      crumbs_ld([(ui["crumb_home"], home_url), (ui["crumb_courses"], home_url + "#kursy"), (c["name"], url)])]
-            common.update(og_image=SITE_URL + "/assets/img/" + c["photo"], og_w=900, og_h=560, og_alt=c["alt"],
-                          preload="assets/img/" + c["photo"])
             html = env.get_template("course.html").render(
                 page_title=cc["title"], page_desc=cc["desc"], c=c, cc=cc, others=others,
                 nav_base=root + (l["home"] or "./"), jsonld=ld(graph), **common)
