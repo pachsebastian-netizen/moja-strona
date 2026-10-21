@@ -12,7 +12,7 @@ from content_extra import ADDS
 # ---------------- USTAWIENIA DO UZUPEŁNIENIA ----------------
 # Adres formularza z Formspree, np. "https://formspree.io/f/abcdwxyz".
 # Pusty = formularz otwiera program pocztowy (tryb awaryjny).
-FORM_ENDPOINT = ""
+FORM_ENDPOINT = "https://formspree.io/f/myekrpoy"
 
 PLACEHOLDER = '<span class="placeholder">{}</span>'
 COMPANY = dict(
