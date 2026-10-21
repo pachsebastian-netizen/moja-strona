@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://allpass.pl/sitemap.xml

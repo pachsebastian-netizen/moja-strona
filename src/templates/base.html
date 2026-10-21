@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc }}">
+<link rel="canonical" href="{{ site_url }}{{ path }}">
+{% for l in langs %}<link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ site_url }}{{ l.alt_path }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ site_url }}{{ langs[0].alt_path }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_desc }}">
+<meta property="og:url" content="{{ site_url }}{{ path }}">
+<meta property="og:image" content="{{ site_url }}/assets/og-image.jpg">
+<meta property="og:locale" content="{{ t.og_locale }}">
+<meta name="theme-color" content="#161616">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" type="image/png" href="{{ root }}favicon.png">
+<link rel="apple-touch-icon" href="{{ root }}assets/apple-touch-icon.png">
+{{ fonts | safe }}
+<link rel="stylesheet" href="{{ root }}assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "AllPass Training",
+  "url": "{{ site_url }}/",
+  "logo": "{{ site_url }}/assets/logo-full.png",
+  "email": "biuro@allpass.pl",
+  "areaServed": "PL",
+  "knowsLanguage": ["pl", "en", "uk"]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">{{ t.skip }}</a>
+{{ sprite | safe }}
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="{{ root }}{{ home }}" aria-label="AllPass Training">
+      <img src="{{ root }}assets/logo-h-white@2x.png" width="186" height="44" alt="AllPass Training">
+    </a>
+    <nav class="nav" id="nav" aria-label="{{ t.nav_label }}">
+      <a href="{{ nav_base }}#kursy">{{ t.nav_courses }}</a>
+      <a href="{{ nav_base }}#przebieg">{{ t.nav_process }}</a>
+      <a href="{{ nav_base }}#firmy">{{ t.nav_business }}</a>
+      <a href="{{ nav_base }}#faq">{{ t.nav_faq }}</a>
+      <a href="{{ nav_base }}#kontakt">{{ t.nav_contact }}</a>
+    </nav>
+    <div class="lang" aria-label="{{ t.lang_label }}">
+      {% for l in langs %}<a href="{{ root }}{{ l.alt_rel }}" hreflang="{{ l.hreflang }}" lang="{{ l.hreflang }}" {% if l.code == lang %}aria-current="true"{% endif %} title="{{ l.name }}">{{ l.short }}</a>{% endfor %}
+    </div>
+    <a class="btn btn-primary header-cta" href="{{ nav_base }}#kontakt">{{ t.cta_signup }}</a>
+    <button class="menu-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="{{ t.menu }}"><span></span></button>
+  </div>
+</header>
+
+{% block main %}{% endblock %}
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="{{ root }}assets/logo-h-white@2x.png" width="229" height="54" alt="AllPass Training">
+        <p style="margin-top:16px;max-width:28em">{{ t.footer_about }}</p>
+      </div>
+      <div>
+        <h3>{{ t.nav_courses }}</h3>
+        <ul>{% for c in t.courses if not c.package %}<li><a href="{{ nav_base }}#kursy">{{ c.name }}</a></li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h3>{{ t.footer_company }}</h3>
+        <ul class="company">
+          <li>{{ company.name }}</li>
+          <li>{{ company.address }}</li>
+          <li>NIP: {{ company.nip }}</li>
+          {% if company.register %}<li>{{ company.register }}</li>{% endif %}
+          <li><a href="mailto:{{ company.email }}">{{ company.email }}</a></li>
+          <li>{{ company.phone }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {{ year }} AllPass Training. {{ t.photo_credit }} <a href="https://unsplash.com">Unsplash</a>, <a href="https://www.pexels.com">Pexels</a>.</span>
+      <span class="footer-links"><a href="{{ root }}{{ privacy_rel }}">{{ t.privacy_link }}</a>{% for l in langs %}<a href="{{ root }}{{ l.alt_rel }}" lang="{{ l.hreflang }}">{{ l.name }}</a>{% endfor %}</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('nav');
+  toggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  var form = document.getElementById('signup');
+  if (!form) return;
+  var select = document.getElementById('f-course');
+  document.querySelectorAll('[data-course]').forEach(function (a) {
+    a.addEventListener('click', function () { select.value = a.getAttribute('data-course'); });
+  });
+
+  var T = {{ form_js | safe }};
+  var ENDPOINT = {{ form_endpoint | tojson }};
+  var status = document.getElementById('form-status');
+  var button = form.querySelector('button[type="submit"]');
+
+  function show(msg, kind) { status.className = 'form-status' + (kind ? ' ' + kind : ''); status.textContent = msg; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.elements.name.value.trim();
+    var phone = form.elements.phone.value.trim();
+    var email = form.elements.email.value.trim();
+    if (!name) { show(T.errName, 'error'); form.elements.name.focus(); return; }
+    if (!phone && !email) { show(T.errContact, 'error'); form.elements.phone.focus(); return; }
+    if (email && !form.elements.email.checkValidity()) { show(T.errEmail, 'error'); form.elements.email.focus(); return; }
+    if (form.elements._gotcha.value) { show(T.sent, 'ok'); form.reset(); return; }
+
+    var course = select.options[select.selectedIndex].text;
+    var data = {};
+    data[T.lName] = name;
+    data[T.lPhone] = phone || '-';
+    data[T.lEmail] = email || '-';
+    data[T.lCourse] = course;
+    data[T.lPeople] = form.elements.people.value;
+    data[T.lLang] = form.elements.lang.value;
+    data[T.lPlace] = form.elements.place.value;
+    data[T.lMsg] = form.elements.message.value.trim() || '-';
+    data._subject = T.subject + ': ' + course + ' (' + name + ')';
+    if (email) data.email = email;
+
+    if (!ENDPOINT) {
+      var lines = Object.keys(data).filter(function (k) { return k.charAt(0) !== '_' && k !== 'email'; })
+        .map(function (k) { return k + ': ' + data[k]; });
+      window.location.href = 'mailto:{{ company.email }}?subject=' + encodeURIComponent(data._subject) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+      show(T.mailOpened, 'ok');
+      return;
+    }
+
+    button.disabled = true;
+    show(T.sending);
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      form.reset();
+      show(T.sent, 'ok');
+    }).catch(function () {
+      show(T.failed, 'error');
+    }).finally(function () { button.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>

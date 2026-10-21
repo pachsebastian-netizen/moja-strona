@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block main %}
+<main id="main">
+  <section class="hero on-dark">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>{{ t.hero_h1 }}</h1>
+        <p class="lead">{{ t.hero_lead }}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#kontakt">{{ t.cta_signup }}</a>
+          <a class="btn btn-ghost" href="#kursy">{{ t.cta_prices }}</a>
+        </div>
+        <p class="hero-note">{{ t.hero_note }}</p>
+      </div>
+      <figure class="hero-photo"><img src="{{ root }}assets/img/hero-wozek.webp" width="1100" height="1375" alt="{{ t.alt_hero }}" fetchpriority="high"></figure>
+    </div>
+      </section>
+
+  <section class="facts" aria-label="{{ t.facts_label }}">
+    <div class="wrap facts-grid">
+      {% for f in t.facts %}<div class="fact"><strong>{{ f[0] }}</strong><span>{{ f[1] }}</span></div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section" id="kursy">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{{ t.courses_h2 }}</h2>
+        <p class="lead">{{ t.courses_lead }}</p>
+      </div>
+      <div class="plates">
+        {% for c in t.courses %}
+        <article class="plate{% if c.package %} package{% endif %}{% if c.photo %} has-photo{% endif %}">
+          {% if c.photo %}<img class="plate-photo" src="{{ root }}assets/img/{{ c.photo }}" width="900" height="560" alt="{{ c.alt }}" loading="lazy">{% endif %}
+          <div class="plate-head">
+            {% if c.photo %}{% elif c.icons|length == 1 %}<svg aria-hidden="true" viewBox="0 0 {{ c.vb }} 100"><use href="#{{ c.icons[0] }}"/></svg>
+            {% else %}<svg class="duo" aria-hidden="true" viewBox="0 0 260 100"><use href="#{{ c.icons[0] }}" x="0" y="0" width="140" height="100"/><use href="#{{ c.icons[1] }}" x="140" y="0" width="120" height="100"/></svg>{% endif %}
+            <div>
+              <h3>{{ c.name }}</h3>
+              <span class="plate-issuer">{{ c.issuer }}</span>
+            </div>
+          </div>
+          <dl class="plate-specs">
+            {% for s in c.specs %}<div><dt>{{ s[0] }}</dt><dd>{{ s[1] }}</dd></div>
+            {% endfor %}
+          </dl>
+          <div class="plate-foot">
+            <div>
+              <div class="price">{% if c['from'] %}<small>{{ t.from_word }} </small>{% endif %}{{ c.price }}<small> {{ t.currency }}</small></div>
+              <span class="price-note">{{ c.note }}</span>
+              {% if c.saving %}<span class="saving">{{ c.saving }}</span>{% endif %}
+            </div>
+            <a class="btn btn-primary" href="#kontakt" data-course="{{ c.id }}">{{ t.plate_cta }}</a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <p class="price-footnote">{{ t.price_footnote }}</p>
+    </div>
+  </section>
+
+  <section class="section bg-concrete" id="przebieg">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{{ t.process_h2 }}</h2>
+        <p class="lead">{{ t.process_lead }}</p>
+      </div>
+      <ol class="steps">
+        {% for s in t.steps %}<li class="step"><span class="step-num" aria-hidden="true">{{ loop.index }}</span><h3>{{ s[0] }}</h3><p>{{ s[1] }}</p></li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <figure class="band"><img src="{{ root }}assets/img/pas-podest.webp" width="2000" height="900" alt="{{ t.alt_band }}" loading="lazy"></figure>
+
+  <section class="section dark on-dark" id="firmy">
+    <div class="wrap biz-grid">
+      <div>
+        <h2>{{ t.biz_h2 }}</h2>
+        <p class="lead" style="margin-top:16px">{{ t.biz_lead }}</p>
+        <ul class="biz-list">
+          {% for b in t.biz %}<li><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>{{ b[0] }}</strong> {{ b[1] }}</span></li>
+          {% endfor %}
+        </ul>
+        <a class="btn btn-primary" href="#kontakt" data-course="firma">{{ t.biz_cta }}</a>
+      </div>
+      <div class="langs">
+        <h3>{{ t.langs_h3 }}</h3>
+        <p>{{ t.langs_p }}</p>
+        <div class="lang-cards">
+          {% for l in t.lang_cards %}<div class="lang-card" lang="{{ l[3] }}"><span class="lang-code">{{ l[0] }}</span><div><strong>{{ l[1] }}</strong><span>{{ l[2] }}</span></div></div>
+          {% endfor %}
+        </div>
+        <p class="interp">{{ t.interp }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head"><h2>{{ t.faq_h2 }}</h2></div>
+      <div class="faq">
+        {% for q in t.faq %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-concrete" id="kontakt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{{ t.contact_h2 }}</h2>
+        <p class="lead">{{ t.contact_lead }}</p>
+      </div>
+      <div class="contact-grid">
+        <form class="form" id="signup" novalidate>
+          <div class="field"><label for="f-name">{{ t.f_name }}</label><input id="f-name" name="name" autocomplete="name" required aria-required="true"></div>
+          <div class="field"><label for="f-phone">{{ t.f_phone }}</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="f-email">{{ t.f_email }}</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="f-people">{{ t.f_people }}</label><input id="f-people" name="people" type="number" min="1" value="1" inputmode="numeric"></div>
+          <div class="field full"><label for="f-course">{{ t.f_course }}</label>
+            <select id="f-course" name="course">
+              {% for c in t.courses %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+              <option value="firma">{{ t.opt_business }}</option>
+              <option value="inne">{{ t.opt_other }}</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-lang">{{ t.f_lang }}</label>
+            <select id="f-lang" name="lang">{% for o in t.lang_opts %}<option{% if loop.first %} selected{% endif %}>{{ o }}</option>{% endfor %}</select>
+          </div>
+          <div class="field"><label for="f-place">{{ t.f_place }}</label>
+            <select id="f-place" name="place">{% for o in t.place_opts %}<option>{{ o }}</option>{% endfor %}</select>
+          </div>
+          <div class="field full"><label for="f-msg">{{ t.f_msg }}</label><textarea id="f-msg" name="message" placeholder="{{ t.f_msg_ph }}"></textarea></div>
+          <div class="hp" aria-hidden="true"><label for="f-hp">Website</label><input id="f-hp" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+          <p class="form-info">{{ t.f_info_1 }} <a href="{{ root }}{{ privacy_rel }}">{{ t.f_info_link }}</a>.</p>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">{{ t.f_submit }}</button>
+            <span class="form-hint">{{ t.f_hint }}</span>
+          </div>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="contact-card" aria-label="{{ t.nav_contact }}">
+          <dl>
+            <div><dt>{{ t.c_email }}</dt><dd><a href="mailto:{{ company.email }}">{{ company.email }}</a></dd></div>
+            <div><dt>{{ t.c_phone }}</dt><dd>{{ company.phone }}</dd></div>
+            <div><dt>{{ t.c_address }}</dt><dd>{{ company.address }}</dd></div>
+            <div><dt>{{ t.c_area }}</dt><dd>{{ t.c_area_v }}</dd></div>
+            <div><dt>{{ t.c_langs }}</dt><dd>{{ t.c_langs_v }}</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

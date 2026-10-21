@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<main id="main">
+  <article class="section legal">
+    <div class="wrap">
+      <header class="legal-head">
+        <h1>{{ p.title }}</h1>
+        <p class="legal-date">{{ p.updated }}</p>
+        <p class="lead">{{ p.intro }}</p>
+      </header>
+      {% for s in p.sections %}
+      <section class="legal-sec">
+        <h2>{{ loop.index }}. {{ s[0] }}</h2>
+        {% for para in s[1] %}{% if para.startswith('<ul>') %}{{ para | safe }}{% else %}<p>{{ para | safe }}</p>{% endif %}{% endfor %}
+      </section>
+      {% endfor %}
+    </div>
+  </article>
+</main>
+{% endblock %}
