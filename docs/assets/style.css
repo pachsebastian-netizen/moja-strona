@@ -347,3 +347,71 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .skip { position: absolute; left: -999px; top: 8px; background: var(--white); padding: 10px 14px; z-index: 100; }
 .skip:focus { left: 8px; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ==========================================================
+   Ciemne, eleganckie tło pod białym nagłówkiem
+   ========================================================== */
+:root {
+  --page: #25272A;        /* grafitowe tło strony */
+  --page-alt: #1D1F21;    /* sekcje wyróżnione */
+  --on-dark: #ECEDEF;     /* tekst na ciemnym */
+  --on-dark-2: #C3C7CC;   /* tekst pomocniczy */
+  --on-dark-3: #9EA3A9;   /* drobne opisy */
+  --line-dark: #3A3D41;   /* linie na ciemnym */
+}
+body { background: var(--page); color: var(--on-dark); }
+.site-header { color: var(--graphite); }
+.lead { color: var(--on-dark-2); }
+.hero-note, .price-footnote, .form-hint, .form-info, .legal-date, .muted { color: var(--on-dark-3); }
+.form-info a { color: var(--on-dark); }
+.btn-ghost { color: var(--on-dark); border-color: var(--on-dark); }
+.btn-ghost:hover { background: var(--on-dark); color: var(--graphite); }
+
+/* Ilustracje: jasne maszyny na ciemnym tle, ciemne na jasnych kartach */
+.hero-art { color: var(--on-dark); --hub: var(--page); }
+.hero-ground { background: #141516; }
+.plate, .course-art, .program li { color: var(--graphite); --hub: #fff; }
+
+/* Atuty */
+.facts { background: var(--page-alt); }
+.fact + .fact, .fact:nth-child(even) { border-left-color: var(--line-dark); }
+.fact:nth-child(n+3), .fact + .fact { border-top-color: var(--line-dark); }
+.fact span { color: var(--on-dark-3); }
+
+/* Przebieg kursu */
+.bg-concrete { background: var(--page-alt); }
+.step-num { background: var(--on-dark); color: var(--graphite); }
+.step::before { background: #5A5E63; }
+.step p { color: var(--on-dark-2); }
+
+/* Dla firm i stopka: o ton ciemniej niż tło */
+.dark { background: #17181A; }
+.site-footer { background: #121314; }
+
+/* Pytania */
+.faq details { border-top-color: var(--line-dark); }
+.faq details:last-child { border-bottom-color: var(--line-dark); }
+.faq summary::after { border-color: var(--on-dark); }
+.faq details p { color: var(--on-dark-2); }
+.area { background: var(--page-alt); border: 1px solid var(--line-dark); }
+.area p { color: var(--on-dark-2); }
+
+/* Kontakt */
+.contact-card { background: var(--page-alt); border: 1px solid var(--line-dark); }
+.contact-card dl div { border-bottom-color: var(--line-dark); }
+.contact-card dt { color: var(--on-dark-3); }
+.placeholder { color: var(--on-dark-3); }
+.form-status.ok { color: #7FD69B; }
+.form-status.error { color: #FF9A8F; }
+
+/* Polityka prywatności */
+.legal-sec { border-top-color: var(--line-dark); }
+.legal-sec p, .legal-sec li { color: var(--on-dark-2); }
+
+/* Podstrony kursów */
+.crumbs { color: var(--on-dark-3); }
+.crumbs a { color: var(--on-dark); }
+.course-price .price-note { color: var(--on-dark-3); }
+.ticks li { border-top-color: var(--line-dark); }
+.ticks li:last-child { border-bottom-color: var(--line-dark); }
+.ticks svg { color: var(--orange); }

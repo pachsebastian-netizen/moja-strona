@@ -4,15 +4,15 @@
   <use href="#i-forklift" x="290" y="278" width="204" height="170"/>
   <g transform="translate(60 0)">
     <g class="lift-rise" style="transform-box: fill-box">
-      <rect x="452" y="72" width="168" height="46" rx="3" fill="none" stroke="#1C1C1C" stroke-width="6"/>
-      <line x1="508" y1="72" x2="508" y2="118" stroke="#1C1C1C" stroke-width="5"/>
-      <line x1="564" y1="72" x2="564" y2="118" stroke="#1C1C1C" stroke-width="5"/>
+      <rect x="452" y="72" width="168" height="46" rx="3" fill="none" stroke="currentColor" stroke-width="6"/>
+      <line x1="508" y1="72" x2="508" y2="118" stroke="currentColor" stroke-width="5"/>
+      <line x1="564" y1="72" x2="564" y2="118" stroke="currentColor" stroke-width="5"/>
       <rect x="440" y="118" width="192" height="16" rx="3" fill="#F4741B"/>
       <path d="M466 134 L606 199 M606 134 L466 199 M466 199 L606 264 M606 199 L466 264 M466 264 L606 329 M606 264 L466 329 M466 329 L606 394 M606 329 L466 394"
-            stroke="#1C1C1C" stroke-width="7" stroke-linecap="round"/>
+            stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
     </g>
     <rect x="448" y="392" width="176" height="24" rx="4" fill="#F4741B"/>
-    <circle cx="478" cy="422" r="14" fill="#1C1C1C"/><circle cx="478" cy="422" r="5" fill="#fff"/>
-    <circle cx="594" cy="422" r="14" fill="#1C1C1C"/><circle cx="594" cy="422" r="5" fill="#fff"/>
+    <circle cx="478" cy="422" r="14" fill="currentColor"/><circle cx="478" cy="422" r="5" style="fill:var(--hub,#fff)"/>
+    <circle cx="594" cy="422" r="14" fill="currentColor"/><circle cx="594" cy="422" r="5" style="fill:var(--hub,#fff)"/>
   </g>
 </svg>
