@@ -37,7 +37,7 @@
             {% if c.photo %}{% elif c.icons|length == 1 %}<svg aria-hidden="true" viewBox="0 0 {{ c.vb }} 100"><use href="#{{ c.icons[0] }}"/></svg>
             {% else %}<svg class="duo" aria-hidden="true" viewBox="0 0 260 100"><use href="#{{ c.icons[0] }}" x="0" y="0" width="140" height="100"/><use href="#{{ c.icons[1] }}" x="140" y="0" width="120" height="100"/></svg>{% endif %}
             <div>
-              <h3>{{ c.name }}</h3>
+              <h3>{% if c.slug %}<a href="{{ root }}{{ c.slug }}">{{ c.name }}</a>{% else %}{{ c.name }}{% endif %}</h3>
               <span class="plate-issuer">{{ c.issuer }}</span>
             </div>
           </div>
@@ -51,7 +51,7 @@
               <span class="price-note">{{ c.note }}</span>
               {% if c.saving %}<span class="saving">{{ c.saving }}</span>{% endif %}
             </div>
-            <a class="btn btn-primary" href="#kontakt" data-course="{{ c.id }}">{{ t.plate_cta }}</a>
+            <div class="plate-actions"><a class="btn btn-primary" href="#kontakt" data-course="{{ c.id }}">{{ t.plate_cta }}</a>{% if c.slug %}<a class="plate-more" href="{{ root }}{{ c.slug }}">{{ ui.details }}</a>{% endif %}</div>
           </div>
         </article>
         {% endfor %}
@@ -104,6 +104,10 @@
       <div class="faq">
         {% for q in t.faq %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>
         {% endfor %}
+      </div>
+      <div class="area">
+        <h3>{{ ui.area_h }}</h3>
+        <p>{{ ui.area }}</p>
       </div>
     </div>
   </section>

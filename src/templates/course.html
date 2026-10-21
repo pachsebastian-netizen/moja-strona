@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block main %}
+<main id="main">
+  <section class="hero course-hero on-dark">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="{{ nav_base }}">{{ ui.crumb_home }}</a><span aria-hidden="true">/</span>
+        <a href="{{ nav_base }}#kursy">{{ ui.crumb_courses }}</a><span aria-hidden="true">/</span>
+        <span aria-current="page">{{ c.name }}</span>
+      </nav>
+      <div class="hero-grid course-grid">
+        <div class="hero-copy">
+          <h1>{{ cc.h1 }}</h1>
+          <p class="lead">{{ cc.lead }}</p>
+          <div class="course-price">
+            <span class="price">{% if c['from'] %}<small>{{ t.from_word }} </small>{% endif %}{{ c.price }}<small> {{ t.currency }}</small></span>
+            <span class="price-note">{{ c.note }}</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ nav_base }}?kurs={{ c.id }}#kontakt">{{ ui.signup }}</a>
+            <a class="btn btn-ghost" href="#program">{{ cc.program_h }}</a>
+          </div>
+        </div>
+        <figure class="hero-photo course-photo"><img src="{{ root }}assets/img/{{ c.photo }}" width="900" height="560" alt="{{ c.alt }}" fetchpriority="high"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap course-body">
+      <div class="course-col">
+        <h2>{{ cc.scope_h }}</h2>
+        <ul class="ticks">{% for s in cc.scope %}<li><svg aria-hidden="true"><use href="#i-check"/></svg><span>{{ s }}</span></li>{% endfor %}</ul>
+      </div>
+      <div class="course-col">
+        <h2>{{ cc.who_h }}</h2>
+        <ul class="ticks">{% for s in cc.who %}<li><svg aria-hidden="true"><use href="#i-check"/></svg><span>{{ s }}</span></li>{% endfor %}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-concrete" id="program">
+    <div class="wrap">
+      <div class="section-head"><h2>{{ cc.program_h }}</h2><p class="lead">{{ ui.process_note }}</p></div>
+      <ul class="program">{% for s in cc.program %}<li>{{ s }}</li>{% endfor %}</ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2>{{ ui.faq_h }}</h2></div>
+      <div class="faq">
+        {% for q in cc.faq %}<details{% if loop.first %} open{% endif %}><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>
+        {% endfor %}
+      </div>
+      <div class="area">
+        <h3>{{ ui.area_h }}</h3>
+        <p>{{ ui.area }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark on-dark course-cta">
+    <div class="wrap">
+      <h2>{{ ui.signup }}</h2>
+      <p class="lead" style="margin-top:16px">{{ t.contact_lead }}</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="{{ nav_base }}?kurs={{ c.id }}#kontakt">{{ ui.signup }}</a></div>
+      <h3 class="other-h">{{ ui.other_h }}</h3>
+      <ul class="other">{% for o in others %}<li><a href="{{ root }}{{ o.slug }}">{{ o.name }}</a></li>{% endfor %}</ul>
+    </div>
+  </section>
+</main>
+{% endblock %}

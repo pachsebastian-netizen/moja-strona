@@ -12,26 +12,24 @@
 <meta property="og:title" content="{{ page_title }}">
 <meta property="og:description" content="{{ page_desc }}">
 <meta property="og:url" content="{{ site_url }}{{ path }}">
-<meta property="og:image" content="{{ site_url }}/assets/og-image.jpg">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:image:width" content="{{ og_w }}">
+<meta property="og:image:height" content="{{ og_h }}">
+<meta property="og:image:alt" content="{{ og_alt }}">
+<meta property="og:site_name" content="AllPass Training">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:locale" content="{{ t.og_locale }}">
+{% for l in langs if l.code != lang %}<meta property="og:locale:alternate" content="{{ l.t.og_locale }}">
+{% endfor %}
 <meta name="theme-color" content="#161616">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/png" href="{{ root }}favicon.png">
 <link rel="apple-touch-icon" href="{{ root }}assets/apple-touch-icon.png">
 {{ fonts | safe }}
 <link rel="stylesheet" href="{{ root }}assets/style.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "AllPass Training",
-  "url": "{{ site_url }}/",
-  "logo": "{{ site_url }}/assets/logo-full.png",
-  "email": "biuro@allpass.pl",
-  "areaServed": "PL",
-  "knowsLanguage": ["pl", "en", "uk"]
-}
-</script>
+{% if preload %}<link rel="preload" as="image" href="{{ root }}{{ preload }}" fetchpriority="high">{% endif %}
+<script type="application/ld+json">{{ jsonld | safe }}</script>
 </head>
 <body>
 <a class="skip" href="#main">{{ t.skip }}</a>
@@ -68,7 +66,7 @@
       </div>
       <div>
         <h3>{{ t.nav_courses }}</h3>
-        <ul>{% for c in t.courses if not c.package %}<li><a href="{{ nav_base }}#kursy">{{ c.name }}</a></li>{% endfor %}</ul>
+        <ul>{% for c in t.courses if c.slug %}<li><a href="{{ root }}{{ c.slug }}">{{ c.name }}</a></li>{% endfor %}</ul>
       </div>
       <div>
         <h3>{{ t.footer_company }}</h3>
@@ -108,6 +106,7 @@
     a.addEventListener('click', function () { select.value = a.getAttribute('data-course'); });
   });
 
+  try { var q = new URLSearchParams(location.search).get('kurs'); if (q && select.querySelector('option[value="' + q + '"]')) select.value = q; } catch (e) {}
   var T = {{ form_js | safe }};
   var ENDPOINT = {{ form_endpoint | tojson }};
   var status = document.getElementById('form-status');

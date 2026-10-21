@@ -1,9 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://allpass.pl/</loc></url>
-  <url><loc>https://allpass.pl/polityka-prywatnosci/</loc></url>
-  <url><loc>https://allpass.pl/en/</loc></url>
-  <url><loc>https://allpass.pl/en/privacy-policy/</loc></url>
-  <url><loc>https://allpass.pl/uk/</loc></url>
-  <url><loc>https://allpass.pl/uk/privacy-policy/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://allpass.pl/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/polityka-prywatnosci/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/privacy-policy/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/kurs-wozki-widlowe/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-wozki-widlowe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/forklift-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-navantazhuvachi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/kurs-ladowarki-teleskopowe/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-ladowarki-teleskopowe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/telehandler-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-teleskopichni-navantazhuvachi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/kurs-podesty-ruchome-zwyzki/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-podesty-ruchome-zwyzki/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/aerial-work-platform-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-pidiomni-platformy/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/szkolenia-bhp/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/szkolenia-bhp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/health-and-safety-training/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/okhorona-pratsi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/en/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/en/privacy-policy/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/privacy-policy/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/en/forklift-course/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-wozki-widlowe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/forklift-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-navantazhuvachi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/en/telehandler-course/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-ladowarki-teleskopowe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/telehandler-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-teleskopichni-navantazhuvachi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/en/aerial-work-platform-course/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-podesty-ruchome-zwyzki/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/aerial-work-platform-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-pidiomni-platformy/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/en/health-and-safety-training/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/szkolenia-bhp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/health-and-safety-training/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/okhorona-pratsi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/uk/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/uk/privacy-policy/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/polityka-prywatnosci/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/privacy-policy/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/privacy-policy/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/uk/kurs-navantazhuvachi/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-wozki-widlowe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/forklift-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-navantazhuvachi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/uk/kurs-teleskopichni-navantazhuvachi/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-ladowarki-teleskopowe/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/telehandler-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-teleskopichni-navantazhuvachi/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/uk/kurs-pidiomni-platformy/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/kurs-podesty-ruchome-zwyzki/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/aerial-work-platform-course/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/kurs-pidiomni-platformy/"/>
+  </url>
+  <url>
+    <loc>https://allpass.pl/uk/okhorona-pratsi/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://allpass.pl/szkolenia-bhp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://allpass.pl/en/health-and-safety-training/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://allpass.pl/uk/okhorona-pratsi/"/>
+  </url>
 </urlset>

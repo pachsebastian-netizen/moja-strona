@@ -15,7 +15,16 @@
 <meta property="og:description" content="How AllPass Training processes the personal data of website visitors and people who send course enquiries.">
 <meta property="og:url" content="https://allpass.pl/en/privacy-policy/">
 <meta property="og:image" content="https://allpass.pl/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AllPass Training">
+<meta property="og:site_name" content="AllPass Training">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="pl_PL">
+<meta property="og:locale:alternate" content="uk_UA">
+
 <meta name="theme-color" content="#161616">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/png" href="../../favicon.png">
@@ -23,18 +32,67 @@
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Unbounded:wght@400;500;600&family=Onest:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="../../assets/style.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "AllPass Training",
-  "url": "https://allpass.pl/",
-  "logo": "https://allpass.pl/assets/logo-full.png",
-  "email": "biuro@allpass.pl",
-  "areaServed": "PL",
-  "knowsLanguage": ["pl", "en", "uk"]
-}
-</script>
+
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": [
+    "EducationalOrganization",
+    "LocalBusiness"
+   ],
+   "@id": "https://allpass.pl/#organizacja",
+   "name": "AllPass Training",
+   "url": "https://allpass.pl/",
+   "logo": "https://allpass.pl/assets/logo-full.png",
+   "image": "https://allpass.pl/assets/og-image.jpg",
+   "email": "biuro@allpass.pl",
+   "description": "Forklift, aerial work platform and telehandler courses with the UDT exam, plus health and safety training. On our training yard or at your site. In Polish, English and Ukrainian.",
+   "areaServed": [
+    {
+     "@type": "AdministrativeArea",
+     "name": "Województwo śląskie"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Województwo małopolskie"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Województwo podkarpackie"
+    },
+    {
+     "@type": "AdministrativeArea",
+     "name": "Polska"
+    }
+   ],
+   "knowsLanguage": [
+    "pl",
+    "en",
+    "uk"
+   ],
+   "priceRange": "99–1290 zł",
+   "currenciesAccepted": "PLN"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://allpass.pl/en/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Privacy policy",
+     "item": "https://allpass.pl/en/privacy-policy/"
+    }
+   ]
+  }
+ ]
+}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -188,7 +246,7 @@
       </div>
       <div>
         <h3>Courses and prices</h3>
-        <ul><li><a href="../../en/#kursy">Forklifts</a></li><li><a href="../../en/#kursy">Telehandlers</a></li><li><a href="../../en/#kursy">Aerial work platforms</a></li><li><a href="../../en/#kursy">Health and safety (BHP)</a></li></ul>
+        <ul><li><a href="../../en/forklift-course/">Forklifts</a></li><li><a href="../../en/telehandler-course/">Telehandlers</a></li><li><a href="../../en/aerial-work-platform-course/">Aerial work platforms</a></li><li><a href="../../en/health-and-safety-training/">Health and safety (BHP)</a></li></ul>
       </div>
       <div>
         <h3>Company details</h3>
@@ -228,6 +286,7 @@
     a.addEventListener('click', function () { select.value = a.getAttribute('data-course'); });
   });
 
+  try { var q = new URLSearchParams(location.search).get('kurs'); if (q && select.querySelector('option[value="' + q + '"]')) select.value = q; } catch (e) {}
   var T = {"errName": "Enter your full name.", "errContact": "Give a phone number or email so we can reply.", "errConsent": "Tick the data processing consent box.", "ok": "Opening your email app. Send the message and we'll reply as soon as we can.", "subject": "Course enquiry", "lName": "Name", "lPhone": "Phone", "lEmail": "Email", "lCourse": "Course", "lPeople": "People", "lLang": "Language", "lPlace": "Location", "errEmail": "Check the email address, it looks incomplete.", "sending": "Sending…", "sent": "Thank you, your enquiry has arrived. We'll reply as soon as we can.", "failed": "The form could not be sent. Try again or write directly to biuro@allpass.pl.", "mailOpened": "Your email app is open. Send the message and we'll reply as soon as we can.", "lMsg": "Message"};
   var ENDPOINT = "https://formspree.io/f/myekrpoy";
   var status = document.getElementById('form-status');
